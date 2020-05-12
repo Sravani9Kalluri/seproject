@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">start</string>
+    <string name="username">username</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign up</string>
+    <string name="submit">SUBMIT</string>
+    <string name="firstname">firstname</string>
+    <string name="lastname">lastname</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="dateofbirth">date of birth</string>
+    <string name="add_category">Add Category</string>
+    <string name="food_necessities"><![CDATA[Food & Necessities]]></string>
+
+
+    <string-array name="selectcategory_array">
+        <item>Food_and_Necessicites</item>
+        <item>Entertinement</item>
+        <item>Bills</item>
+        <item>Travel_Expenses</item>
+    </string-array>
+</resources>
