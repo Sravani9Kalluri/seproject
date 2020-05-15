@@ -1,6 +1,7 @@
 package com.example.start;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -15,6 +16,7 @@ public class addcategory extends AppCompatActivity {
 
     CardView addcat;
     Toolbar toolbar;
+    private ActionBar actionBar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -22,13 +24,18 @@ public class addcategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addcategory);
 
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("Categories");
+
         addcat = findViewById(R.id.addcat1);
         addcat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(addcategory.this,createCategory.class);
                 startActivity(intent);
-                finish();
+
             }
         });
         /*toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -56,4 +63,9 @@ public class addcategory extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //        }
 //
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
 }

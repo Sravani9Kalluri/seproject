@@ -1,5 +1,6 @@
 package com.example.start;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
@@ -16,6 +17,8 @@ public class home extends AppCompatActivity {
     CardView setcard;
     SharedPreferences sp;
 
+    private ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +34,16 @@ public class home extends AppCompatActivity {
         setcard = findViewById(R.id.setcard);
         showcard= findViewById(R.id.showcard);
 
+        actionBar = getSupportActionBar();
+        actionBar.setTitle("Home");
+
 
         setcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(home.this,Settings.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -46,7 +52,7 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(home.this,profile.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -55,7 +61,7 @@ public class home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(home.this,showanalysis.class);
                 startActivity(intent);
-                finish();
+
             }
         });
     }

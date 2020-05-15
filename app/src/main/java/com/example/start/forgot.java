@@ -38,7 +38,7 @@ public class forgot extends AppCompatActivity {
                if(ans_user.equals(ans_act) && ans_user != ""){
                    Intent intent = new Intent(forgot.this,reset.class);
                    startActivity(intent);
-                   finish();
+
                }
                else{
                    Toast.makeText(getBaseContext(), "wrong answer", Toast.LENGTH_SHORT).show();
