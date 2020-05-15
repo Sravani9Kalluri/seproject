@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class home extends AppCompatActivity {
@@ -20,11 +22,11 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
         int salary = sp.getInt("salary",0);
-        if(salary == 0){
+        /*if(salary == 0){
             Intent intent=new Intent(home.this,Settings.class);
             startActivity(intent);
             finish();
-        }
+        }*/
         profilecard = findViewById(R.id.profilecard);
         setcard = findViewById(R.id.setcard);
         showcard= findViewById(R.id.showcard);
@@ -56,5 +58,23 @@ public class home extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_sign_out) {
+            // do something
+            Intent i = new Intent(home.this, login.class);
+            startActivity(i);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

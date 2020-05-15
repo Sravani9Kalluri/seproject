@@ -12,6 +12,7 @@
     <string name="dateofbirth">date of birth</string>
     <string name="add_category">Add Category</string>
     <string name="food_necessities"><![CDATA[Food & Necessities]]></string>
+    <string name="sign_out_confirm">Sign Out</string>
 
 
     <string-array name="selectcategory_array">
