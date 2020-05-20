@@ -25,11 +25,11 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
         int salary = sp.getInt("salary",0);
-        /*if(salary == 0){
-            Intent intent=new Intent(home.this,Settings.class);
+        if(salary == 0){
+            Intent intent=new Intent(home.this,profile.class);
             startActivity(intent);
             finish();
-        }*/
+        }
         profilecard = findViewById(R.id.profilecard);
         setcard = findViewById(R.id.setcard);
         showcard= findViewById(R.id.showcard);
