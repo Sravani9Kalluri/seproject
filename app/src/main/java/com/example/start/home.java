@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class home extends AppCompatActivity {
     CardView showcard;
@@ -26,9 +27,9 @@ public class home extends AppCompatActivity {
         sp = PreferenceManager.getDefaultSharedPreferences(this);
         int salary = sp.getInt("salary",0);
         if(salary == 0){
+            Toast.makeText(home.this,"Enter salary",Toast.LENGTH_LONG).show();
             Intent intent=new Intent(home.this,profile.class);
             startActivity(intent);
-            finish();
         }
         profilecard = findViewById(R.id.profilecard);
         setcard = findViewById(R.id.setcard);

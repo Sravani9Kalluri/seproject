@@ -13,7 +13,10 @@
     <string name="add_category">Add Category</string>
     <string name="food_necessities"><![CDATA[Food & Necessities]]></string>
     <string name="sign_out_confirm">Sign Out</string>
-
+    <string name="edit_details">User details</string>
+    <string name="edit_name">Your name</string>
+    <string name="edit_salary_st">Your salary</string>
+    <string name="save">save</string>
 
     <string-array name="selectcategory_array">
         <item>Food_and_Necessicites</item>

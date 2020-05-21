@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:foregroundGravity="center"
                 android:gravity="center"
-                android:text="Entertinement"
+                android:text="Entertainment"
                 android:textColor="#fff"
                 android:textStyle="bold" />
         </RelativeLayout>
