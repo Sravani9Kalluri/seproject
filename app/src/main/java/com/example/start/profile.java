@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.List;
+
 public class profile extends AppCompatActivity {
 
     private ActionBar actionBar;
@@ -26,7 +28,14 @@ public class profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_profile);
+        Databasehelper db = new Databasehelper(this);
+
+        List<List<String>> x;
+        x = db.getCategories();
+        List<String> cat = x.get(0);
+        Toast.makeText(this,cat.get(0),Toast.LENGTH_SHORT).show();
 
         btn=findViewById(R.id.save_edit_cd);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -44,9 +53,13 @@ public class profile extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sp.edit();
                 if(salary_edit.equals("0")){
+                    String salary_1 = salary_edit.getText().toString();
+                    editor.putString("com.start.salary",salary_1);
+                    editor.commit();
                     Toast.makeText(profile.this,"Enter salary",Toast.LENGTH_LONG).show();
                 }
                 else{
+
                     Intent intent=new Intent(profile.this,home.class);
                     startActivity(intent);
                 }
