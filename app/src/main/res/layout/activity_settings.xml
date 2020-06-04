@@ -30,13 +30,13 @@
         android:id="@+id/categorybtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Category" />
+        android:text="Categories" />
 
     <Button
         android:id="@+id/shopbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My shops" />
+        android:text="Add shops" />
 
 
 

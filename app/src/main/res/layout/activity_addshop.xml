@@ -15,7 +15,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Enter name" />
+        android:hint="Enter name" />
 
     <Spinner
         android:id="@+id/setcategory"

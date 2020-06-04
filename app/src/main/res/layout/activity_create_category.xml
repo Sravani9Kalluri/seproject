@@ -15,7 +15,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Ctegory Name" />
+        android:hint="Ctegory Name" />
 
     <EditText
         android:id="@+id/nwecatl"
@@ -25,7 +25,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Limit" />
+        android:hint="Limit" />
 
 
     <RelativeLayout
