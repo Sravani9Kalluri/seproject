@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class addshop extends AppCompatActivity {
 
     private ActionBar actionBar;
@@ -18,7 +20,11 @@ public class addshop extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addshop);
-
+        Databasehelper db = new Databasehelper(this);
+        List<List<String>> x;
+        x = db.getshops();
+        List<String> cat = x.get(0);
+        Toast.makeText(this,cat.get(0),Toast.LENGTH_SHORT).show();
         Spinner spinner = (Spinner) findViewById(R.id.setcategory);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

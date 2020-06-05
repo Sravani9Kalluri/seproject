@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
 
+import java.util.List;
+
 
 public class Messagereciever extends BroadcastReceiver {
 
@@ -27,6 +29,12 @@ public class Messagereciever extends BroadcastReceiver {
                     Toast.makeText(context,msgBody,Toast.LENGTH_SHORT).show();
                 }catch (Exception e){e.printStackTrace();}
             }
+            Databasehelper db = new Databasehelper(context);
+            db.addtransaction();
+            //List<List<String>> x;
+            //x = db.getCategories();
+            //List<String> cat = x.get(0);
+            //Toast.makeText(context,cat.get(0),Toast.LENGTH_SHORT).show();
         }
 
 

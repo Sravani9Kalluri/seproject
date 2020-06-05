@@ -62,10 +62,10 @@ public class Databasehelper extends SQLiteOpenHelper {
     String CREATE_C_TABLE ="CREATE TABLE " + CAT_TABLE   + "("
 
             + C_CAT + " TEXT, "+ C_LIMIT + " INTEGER, " + C_AMOUNT + " INTEGER," +
-            C_DEFAULT + "INTEGER );";
+            C_DEFAULT + " INTEGER );";
 
-    String CREATE_S_TABLE ="CREATE TABLE " + SHOP_TABLE + "(" + S_SHOP + " TEXT," + S_CATEGORY + "TEXT );";
-    String CREATE_R_TABLE = "CREATE TABLE " + REGEX_TABLE + "(" + R_REGEX + " TEXT," + R_CATEGORY + "TEXT );";
+    String CREATE_S_TABLE ="CREATE TABLE " + SHOP_TABLE + "(" + S_SHOP + " TEXT," + S_CATEGORY + " TEXT );";
+    String CREATE_R_TABLE = "CREATE TABLE " + REGEX_TABLE + "(" + R_REGEX + " TEXT," + R_CATEGORY + " TEXT );";
     public Databasehelper(Context context) {
 
         super(context, DATA_BASE_NAME, null, DATA_BASE_VERSION);
@@ -90,26 +90,42 @@ public class Databasehelper extends SQLiteOpenHelper {
         cv.put(C_CAT, "food and necessities");
         cv.put(C_LIMIT, 0);
         cv.put(C_AMOUNT, 0);
-        //cv.put(C_DEFAULT, 1);
+        cv.put(C_DEFAULT, 1);
         ContentValues cp = new ContentValues();
         cp.put(C_CAT, "entertainment");
         cp.put(C_LIMIT, 0);
         cp.put(C_AMOUNT, 0);
-        //cp.put(C_DEFAULT, 1);
+        cp.put(C_DEFAULT, 1);
         ContentValues cg = new ContentValues();
         cg.put(C_CAT, "bills");
         cg.put(C_LIMIT, 0);
         cg.put(C_AMOUNT, 0);
-        //cg.put(C_DEFAULT, 1);
+        cg.put(C_DEFAULT, 1);
         ContentValues cb = new ContentValues();
         cb.put(C_CAT, "travel expenses");
         cb.put(C_LIMIT, 0);
         cb.put(C_AMOUNT, 0);
-        //cb.put(C_DEFAULT, 1);
+        cb.put(C_DEFAULT, 1);
         db.insert(CAT_TABLE,null,cv);
         db.insert(CAT_TABLE,null,cp);
         db.insert(CAT_TABLE,null,cb);
         db.insert(CAT_TABLE,null,cg);
+        ContentValues cs1 = new ContentValues();
+        cs1.put(S_SHOP, "aishwarya mart");
+        cs1.put(S_CATEGORY, "food and necessities");
+        ContentValues cs2  = new ContentValues();
+        cs2.put(S_SHOP, "IRCTC");
+        cs2.put(S_CATEGORY, "travel expenses");
+        ContentValues cs3  = new ContentValues();
+        cs3.put(S_SHOP, "ashoka restaurant");
+        cs3.put(S_CATEGORY, "entertainment");
+        db.insert(SHOP_TABLE,null,cs1);
+        db.insert(SHOP_TABLE,null,cs2);
+        db.insert(SHOP_TABLE,null,cs3);
+
+
+
+
         Toast.makeText(appcontext,"hello4",Toast.LENGTH_SHORT).show();
         Log.e("db on create call","called1");
 
@@ -160,6 +176,51 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
+    public List<List<String>> getshops(){
+        Log.e("db on create call","called6");
+        String selectQuery = "SELECT  * FROM " + SHOP_TABLE;
+        SQLiteDatabase dbt = this.getReadableDatabase();
+        Cursor cursor = dbt.rawQuery(selectQuery, null);
+        Log.e("db on create call","called4");
+        List<List<String>> result = new ArrayList<>();
+        List<String> sname = new ArrayList<>();
+        List<String> scat = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                sname.add(cursor.getString(0));
+                scat.add(cursor.getString(1));
+                // Adding contact to list
+            } while (cursor.moveToNext());
+
+            result.add(sname);
+            result.add(scat);
+
+        }
+
+        cursor.close();
+        dbt.close();
+        return result;
+
+
+    }
+
+
+
+
+    public String findCategory(String shop){
+
+        return "bills";
+    }
+    public void addtransaction(){     //String amount,String shop,String date){
+        //String category = findCategory(shop);
+        SQLiteDatabase db = this.getWritableDatabase();
+        String updatequery = "UPDATE "+ CAT_TABLE + " SET " + C_AMOUNT + " = "+ C_AMOUNT + "+ 100 WHERE " +  C_CAT + " = 'bills'";
+        db.execSQL(updatequery);
+
+
+
+
+    }
 
 
 

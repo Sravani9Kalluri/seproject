@@ -34,8 +34,8 @@ public class profile extends AppCompatActivity {
 
         List<List<String>> x;
         x = db.getCategories();
-        List<String> cat = x.get(0);
-        Toast.makeText(this,cat.get(0),Toast.LENGTH_SHORT).show();
+        List<String> cat = x.get(2);
+        Toast.makeText(this,cat.get(3),Toast.LENGTH_SHORT).show();
 
         btn=findViewById(R.id.save_edit_cd);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
