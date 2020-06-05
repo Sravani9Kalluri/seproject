@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="1dp"
+    app:cardBackgroundColor="@color/cardview_dark_background"
+    app:contentPadding="12dp">
+
+    <RelativeLayout
+        android:id="@+id/relative_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/category_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="Category"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/cat_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/category_name"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:text="Limit: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/act_cat_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cat_limit"
+            android:layout_below="@+id/category_name"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:maxLines="1"
+            android:text="Actual Limit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/cat_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cat_limit"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:text="Spent: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/act_cat_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cat_limit"
+            android:layout_below="@+id/act_cat_limit"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:maxLines="1"
+            android:text="Spent amount" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/des_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginLeft="350dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/des_check_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_addlist" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
