@@ -30,6 +30,7 @@ public class Messagereciever extends BroadcastReceiver {
                 }catch (Exception e){e.printStackTrace();}
             }
             Databasehelper db = new Databasehelper(context);
+            String amount = getamount(msgBody);
             db.addtransaction();
             //List<List<String>> x;
             //x = db.getCategories();
@@ -38,5 +39,14 @@ public class Messagereciever extends BroadcastReceiver {
         }
 
 
+    }
+    public String getamount(String msgstr){
+        return "hello";
+    }
+    public String getshopname(String msgStr){
+       return "hello";
+    }
+    public String getdate(String msgStr){
+        return "hello";
     }
 }
