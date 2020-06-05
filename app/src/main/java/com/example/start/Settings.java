@@ -43,7 +43,7 @@ public class Settings extends AppCompatActivity {
         shopbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(Settings.this,addshop.class);
+                Intent intent1=new Intent(Settings.this,ShopsDisplay.class);
                 startActivity(intent1);
 
             }
