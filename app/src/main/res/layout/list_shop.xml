@@ -8,54 +8,54 @@
     app:contentPadding="12dp">
 
     <RelativeLayout
-        android:id="@+id/relative_select"
+        android:id="@+id/relative_select111"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/category_name"
+            android:id="@+id/shop_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text="Category"
+            android:text="Shop"
             android:textColor="@color/colorAccent"
             android:textSize="18sp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/cat_limit"
+            android:id="@+id/shop_cat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/category_name"
+            android:layout_below="@+id/shop_name"
 
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:maxLines="1"
-            android:text="Limit: " />
+            android:text="Category: " />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/act_cat_limit"
+            android:id="@+id/shop_cat_disp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/cat_limit"
-            android:layout_below="@+id/category_name"
+            android:layout_toRightOf="@+id/shop_cat"
+            android:layout_below="@+id/shop_name"
 
             android:layout_marginStart="8dp"
             android:layout_marginLeft="100dp"
             android:maxLines="1"
-            android:text="Actual Limit" />
+            android:text="Category Name" />
 
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/des_btn"
+            android:id="@+id/des_btn1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="top"
             android:layout_marginLeft="350dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/des_check_btn"
+                android:id="@+id/des_check_btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_action_addlist" />

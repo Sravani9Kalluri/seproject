@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Bridge">
-        <activity android:name=".createCategory"></activity>
+        <activity android:name=".ShopsDisplay"></activity>
+        <activity android:name=".createCategory" />
         <activity android:name=".reset" />
         <activity android:name=".forgot" />
         <activity android:name=".addshop" />

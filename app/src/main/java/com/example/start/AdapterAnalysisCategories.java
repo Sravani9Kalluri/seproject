@@ -7,18 +7,16 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.HolderCategories>{
+public class AdapterAnalysisCategories extends RecyclerView.Adapter<AdapterAnalysisCategories.HolderAnalysis> {
     private Context context;
     private ArrayList<ModelCategoriesList> categoriesLists;
 
-    public AdapterCategories(Context context,ArrayList<ModelCategoriesList> categoriesLists){
+    public AdapterAnalysisCategories(Context context,ArrayList<ModelCategoriesList> categoriesLists){
         this.context=context;
         this.categoriesLists=categoriesLists;
 
@@ -26,19 +24,20 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.Ho
 
     @NonNull
     @Override
-    public HolderCategories onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(context).inflate(R.layout.list_category,parent,false);
-        return new HolderCategories(view);
+    public HolderAnalysis onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view=LayoutInflater.from(context).inflate(R.layout.list_analysis_category,parent,false);
+        return new HolderAnalysis(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HolderCategories holder, int position) {
+    public void onBindViewHolder(@NonNull HolderAnalysis holder, int position) {
         final ModelCategoriesList model = categoriesLists.get(position);
         String category=model.getCategory();
         double limit=Double.parseDouble(model.getLimit());
         double amount=Double.parseDouble(model.getAmount());
 
         holder.categoryTv.setText(category);
+        holder.amountTv.setText(Double.toString(amount));
         holder.limitTv.setText(Double.toString(limit));
 
         holder.relative_select.setOnClickListener(new View.OnClickListener() {
@@ -56,24 +55,19 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.Ho
         return categoriesLists.size();
     }
 
+    public class HolderAnalysis extends RecyclerView.ViewHolder{
 
-
-    public class HolderCategories extends RecyclerView.ViewHolder {
-
-        private TextView categoryTv,limitTv;
+        private TextView categoryTv,limitTv,amountTv;
         private RelativeLayout relative_select;
 
-        public HolderCategories(@NonNull View itemView) {
+        public HolderAnalysis(@NonNull View itemView) {
             super(itemView);
 
-            categoryTv=itemView.findViewById(R.id.category_name);
-            limitTv=itemView.findViewById(R.id.act_cat_limit);
-            relative_select=itemView.findViewById(R.id.relative_select);
-
+            categoryTv=itemView.findViewById(R.id.category_name1);
+            amountTv=itemView.findViewById(R.id.act_cat_amount1);
+            limitTv=itemView.findViewById(R.id.act_cat_limit1);
+            relative_select=itemView.findViewById(R.id.relative_select1);
         }
     }
+
 }
-
-
-
-

@@ -2,15 +2,23 @@ package com.example.start;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class showanalysis extends AppCompatActivity {
 
     private ActionBar actionBar;
+    private ArrayList<ModelCategoriesList> modelCategoriesLists;
+    private AdapterAnalysisCategories adapterAnalysisCategories  ;
+    private RecyclerView catRv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,32 @@ public class showanalysis extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle("Analysis");
+
+        catRv=findViewById(R.id.catRv);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        catRv.setLayoutManager(llm);
+        catRv.setAdapter(adapterAnalysisCategories);
+        loadInfo();
+    }
+
+    private void loadInfo(){
+        modelCategoriesLists=new ArrayList<>();
+        List<List<String>> x;
+        Databasehelper db = new Databasehelper(this);
+        x = db.getCategories();
+        List<String> cat = x.get(0);
+        List<String> limit = x.get(1);
+        List<String> amount = x.get(2);
+        for (int i=0;i<cat.size();i++){
+
+            ModelCategoriesList model = new ModelCategoriesList(cat.get(i),Double.parseDouble(limit.get(i)),Double.parseDouble(amount.get(i)));
+            modelCategoriesLists.add(model);
+            adapterAnalysisCategories=new AdapterAnalysisCategories(showanalysis.this,modelCategoriesLists);
+            catRv.setAdapter(adapterAnalysisCategories);
+        }
+
     }
 
     @Override
