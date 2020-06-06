@@ -1,6 +1,7 @@
 package com.example.start;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -39,12 +42,21 @@ public class AdapterShopsList extends RecyclerView.Adapter<AdapterShopsList.Hold
         holder.shopTv.setText(shop);
         holder.categoryTv.setText(category);
 
-        holder.relative_select.setOnClickListener(new View.OnClickListener() {
+        /*holder.relative_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
+        });*/
+        holder.actionButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, EditShopActivity.class);
+                context.startActivity(intent);
+            }
         });
+
+
     }
 
     @Override
@@ -57,6 +69,7 @@ public class AdapterShopsList extends RecyclerView.Adapter<AdapterShopsList.Hold
 
         private TextView categoryTv,shopTv;
         private RelativeLayout relative_select;
+        private FloatingActionButton actionButton1;
 
         public HolderShops(@NonNull View itemView) {
             super(itemView);
@@ -64,7 +77,7 @@ public class AdapterShopsList extends RecyclerView.Adapter<AdapterShopsList.Hold
             shopTv=itemView.findViewById(R.id.shop_name);
             categoryTv=itemView.findViewById(R.id.shop_cat_disp);
             relative_select=itemView.findViewById(R.id.relative_select111);
-
+            actionButton1=itemView.findViewById(R.id.des_check_btn1);
 
         }
     }

@@ -20,7 +20,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="Category"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 
         <com.google.android.material.textview.MaterialTextView

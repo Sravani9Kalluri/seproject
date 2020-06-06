@@ -9,6 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +23,7 @@ public class showanalysis extends AppCompatActivity {
     private ArrayList<ModelCategoriesList> modelCategoriesLists;
     private AdapterAnalysisCategories adapterAnalysisCategories  ;
     private RecyclerView catRv;
+    ExtendedFloatingActionButton actionButton111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +36,22 @@ public class showanalysis extends AppCompatActivity {
         actionBar.setTitle("Analysis");
 
         catRv=findViewById(R.id.catRv);
+        actionButton111=findViewById(R.id.transactions_btn);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         catRv.setLayoutManager(llm);
         catRv.setAdapter(adapterAnalysisCategories);
         loadInfo();
+
+        actionButton111.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(showanalysis.this,TransactionsActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void loadInfo(){

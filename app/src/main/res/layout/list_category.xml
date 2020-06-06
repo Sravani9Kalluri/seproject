@@ -20,7 +20,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="Category"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -52,13 +52,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="top"
-            android:layout_marginLeft="350dp">
+            android:layout_marginLeft="339dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/des_check_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_addlist" />
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:fabCustomSize="35dp"
+                android:src="@drawable/ic_edit_white_24dp" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </RelativeLayout>

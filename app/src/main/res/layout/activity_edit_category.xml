@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".addshop">
+    tools:context=".EditCategoryActivity">
 
     <EditText
         android:id="@+id/sname"
@@ -15,16 +15,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:hint="Enter name" />
-
-    <Spinner
-        android:id="@+id/setcategory"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:spinnerMode="dropdown" />
-
+        android:hint="Enter new limit" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/savenewshop"
@@ -52,6 +43,5 @@
                 android:textSize="30sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

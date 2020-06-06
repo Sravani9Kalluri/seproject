@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Bridge">
-        <activity android:name=".ShopsDisplay"></activity>
+        <activity android:name=".TransactionsActivity"></activity>
+        <activity android:name=".EditCategoryActivity" />
+        <activity android:name=".EditShopActivity" />
+        <activity android:name=".ShopsDisplay" />
         <activity android:name=".createCategory" />
         <activity android:name=".reset" />
         <activity android:name=".forgot" />

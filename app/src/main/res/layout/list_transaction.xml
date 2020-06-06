@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="1dp"
+    app:cardBackgroundColor="@color/cardview_dark_background"
+    app:contentPadding="12dp">
+
+    <RelativeLayout
+        android:id="@+id/relative_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/trans_amt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="Amount"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/trans_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trans_amt"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:text="Shop: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/act_trans_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trans_amt"
+            android:layout_toRightOf="@+id/trans_shop"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:maxLines="1"
+            android:text="Actual Shop" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/trans_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trans_shop"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:text="Category: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/act_trans_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/trans_cat"
+            android:layout_below="@+id/trans_shop"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:maxLines="1"
+            android:text="Actual category" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/trans_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trans_cat"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:maxLines="1"
+            android:text="Date: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/act_trans_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/trans_date"
+            android:layout_below="@+id/trans_cat"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="100dp"
+            android:maxLines="1"
+            android:text="Actual Date" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/des_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginLeft="339dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/des_check_btn"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:fabCustomSize="35dp"
+                android:src="@drawable/ic_edit_white_24dp" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </RelativeLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
