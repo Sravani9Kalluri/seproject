@@ -8,11 +8,13 @@
     android:layout_gravity="bottom"
     tools:context=".TransactionsActivity">
 
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="end|bottom"
         android:layout_marginBottom="10dp">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/transRv"
@@ -22,6 +24,7 @@
             tools:listitem="@layout/list_transaction">
 
         </androidx.recyclerview.widget.RecyclerView>
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

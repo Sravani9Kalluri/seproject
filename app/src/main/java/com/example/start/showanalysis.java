@@ -30,6 +30,7 @@ public class showanalysis extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showanalysis);
 
+
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -47,7 +48,7 @@ public class showanalysis extends AppCompatActivity {
         actionButton111.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(showanalysis.this,TransactionsActivity.class);
+                Intent intent=new Intent(showanalysis.this,RangeActivity.class);
                 startActivity(intent);
 
             }
