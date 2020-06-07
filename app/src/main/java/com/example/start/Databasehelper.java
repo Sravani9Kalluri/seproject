@@ -80,6 +80,9 @@ public class Databasehelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         sp = PreferenceManager.getDefaultSharedPreferences(appcontext);
+        String salaryst = sp.getString("com.start.salary","100");
+        int salary = Integer.parseInt(salaryst);
+        int limit = salary/4;
         Log.e("db on create call","called");
         db.execSQL(CREATE_C_TABLE);
         db.execSQL(CREATE_S_TABLE);
@@ -88,22 +91,22 @@ public class Databasehelper extends SQLiteOpenHelper {
         Log.e("db on create call","called");
         ContentValues cv = new ContentValues();
         cv.put(C_CAT, "food and necessities");
-        cv.put(C_LIMIT, 0);
+        cv.put(C_LIMIT, limit);
         cv.put(C_AMOUNT, 0);
         cv.put(C_DEFAULT, 1);
         ContentValues cp = new ContentValues();
         cp.put(C_CAT, "entertainment");
-        cp.put(C_LIMIT, 0);
+        cp.put(C_LIMIT,limit);
         cp.put(C_AMOUNT, 0);
         cp.put(C_DEFAULT, 1);
         ContentValues cg = new ContentValues();
         cg.put(C_CAT, "bills");
-        cg.put(C_LIMIT, 0);
+        cg.put(C_LIMIT, limit);
         cg.put(C_AMOUNT, 0);
         cg.put(C_DEFAULT, 1);
         ContentValues cb = new ContentValues();
         cb.put(C_CAT, "travel expenses");
-        cb.put(C_LIMIT, 0);
+        cb.put(C_LIMIT, limit);
         cb.put(C_AMOUNT, 0);
         cb.put(C_DEFAULT, 1);
         db.insert(CAT_TABLE,null,cv);
@@ -208,14 +211,38 @@ public class Databasehelper extends SQLiteOpenHelper {
 
 
     public String findCategory(String shop){
+        String selectQuery = "SELECT  * FROM " + SHOP_TABLE + " WHERE " + S_SHOP + "=" + "'" + shop + "'";
+        SQLiteDatabase dbt = this.getReadableDatabase();
+        Cursor cursor = dbt.rawQuery(selectQuery, null);
+        if(cursor != null){
+            Log.e("getcat returnrd","found");
+            cursor.moveToFirst();
+            String category = cursor.getString(1);
+            cursor.close();
+            dbt.close();
+            return category;
+        }
+        else{
+            cursor.close();
+            dbt.close();
+            return "bills";
+        }
 
-        return "bills";
+
     }
-    public void addtransaction(){     //String amount,String shop,String date){
-        //String category = findCategory(shop);
+    public void addtransaction(String amount,String date,String shop){     //String amount,String shop,String date){
+        Log.e("getcategory called","found");
+        String category = findCategory(shop);
         SQLiteDatabase db = this.getWritableDatabase();
-        String updatequery = "UPDATE "+ CAT_TABLE + " SET " + C_AMOUNT + " = "+ C_AMOUNT + "+ 100 WHERE " +  C_CAT + " = 'bills'";
+        String updatequery = "UPDATE "+ CAT_TABLE + " SET " + C_AMOUNT + " = "+ C_AMOUNT + "+" +  amount + " WHERE " +  C_CAT + " = " + "'" + category + "'";
         db.execSQL(updatequery);
+        ContentValues t = new ContentValues();
+        t.put(T_AMOUNT, Integer.parseInt(amount));
+        t.put(T_CATEGORY, category);
+        t.put(T_DATE, date);
+        t.put(T_SHOP, shop);
+        Log.e("added trans","found");
+        db.close();
 
 
 

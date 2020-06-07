@@ -30,12 +30,12 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_profile);
-        Databasehelper db = new Databasehelper(this);
+        /*Databasehelper db = new Databasehelper(this);
 
         List<List<String>> x;
         x = db.getCategories();
         List<String> cat = x.get(2);
-        Toast.makeText(this,cat.get(3),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,cat.get(3),Toast.LENGTH_SHORT).show();*/
 
         btn=findViewById(R.id.save_edit_cd);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -52,8 +52,8 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sp.edit();
-                if(salary_edit.equals("0")){
-                    String salary_1 = salary_edit.getText().toString();
+                String salary_1 = salary_edit.getText().toString();
+                if(!(salary_1.equals("0"))){
                     editor.putString("com.start.salary",salary_1);
                     editor.commit();
                     Toast.makeText(profile.this,"Enter salary",Toast.LENGTH_LONG).show();

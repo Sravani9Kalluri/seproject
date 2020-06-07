@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Messagereciever extends BroadcastReceiver {
@@ -29,9 +32,14 @@ public class Messagereciever extends BroadcastReceiver {
                     Toast.makeText(context,msgBody,Toast.LENGTH_SHORT).show();
                 }catch (Exception e){e.printStackTrace();}
             }
+            String msg = "SYN-INR 360.00 debited to a/c No.XX9020on 05-01-2020 for pos txn";
             Databasehelper db = new Databasehelper(context);
-            String amount = getamount(msgBody);
-            db.addtransaction();
+            String amount = getamount(msg);
+            String shop = getshopname(msg);
+            String date = getdate(msg);
+            if(amount != "nada" && shop != "nada" && date != "nada"){
+                Log.e("addtransaction called","found");
+                db.addtransaction(amount,date,shop);}
             //List<List<String>> x;
             //x = db.getCategories();
             //List<String> cat = x.get(0);
@@ -41,12 +49,32 @@ public class Messagereciever extends BroadcastReceiver {
 
     }
     public String getamount(String msgstr){
-        return "hello";
+        String REGEX = "INR \\d+\\D";
+        Pattern p = Pattern.compile(REGEX);
+        Matcher m = p.matcher(msgstr);
+        if(m.find()){
+            Log.e("getamount called","found");
+            return(msgstr.substring(m.start()+4,m.end()-1));
+
+        }
+        else{
+            return "nada";
+        }
     }
-    public String getshopname(String msgStr){
-       return "hello";
+    public String getshopname(String msgstr){
+        Log.e("getshopname called","found");
+        return "aishwarya mart";
     }
-    public String getdate(String msgStr){
-        return "hello";
+    public String getdate(String msgstr){
+        String REGEX = "on \\d{2}[-/]\\d{2}[-/]\\d+";
+        Pattern p = Pattern.compile(REGEX);
+        Matcher m = p.matcher(msgstr);
+        if(m.find()){
+            Log.e("getdate called","found");
+            return(msgstr.substring(m.start()+3,m.end()));
+        }
+        else {
+            return "nada";
+        }
     }
 }
