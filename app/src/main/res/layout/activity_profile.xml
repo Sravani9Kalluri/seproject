@@ -27,7 +27,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="250dp"
+            android:layout_width="300sp"
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -41,26 +41,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_edit"
-                android:layout_width="250dp"
+                android:layout_width="300sp"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/edit_name" />
         </com.google.android.material.textfield.TextInputLayout>
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/name_btn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="top">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/name_change_btn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/ic_edit_white_24dp"
-                app:fabCustomSize="35dp"
-                android:onClick="display_name"/>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -68,9 +53,56 @@
         android:layout_width="match_parent"
         android:orientation="horizontal">
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/mobile_text"
+            android:id="@+id/email1"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="250dp"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Your email"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit"
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Your email" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/dob"
+        android:layout_width="300sp"
+        android:layout_height="40sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:drawableRight="@drawable/ic_action_date"
+        android:ems="10"
+        android:foregroundGravity="center"
+        android:gravity="start"
+
+        android:textAlignment="textStart"
+        android:hint="Your DOB"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/salary_txt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:focusable="true"
@@ -85,31 +117,81 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_salary"
-                android:layout_width="match_parent"
+                android:layout_width="300sp"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/edit_salary_st"
+                android:ems="10"
+
+                android:inputType="number"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ques_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Security question"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ques_edit"
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Security Question"
                 android:ems="10"
                 android:inputType="phone"
                 android:maxLength="10" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/sal_btn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/sal_change_btn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_edit_white_24dp"
-                app:fabCustomSize="35dp"
-                android:onClick="display_sal"/>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ans_txt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Security answer"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ans_edit"
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:autofillHints="Security answer"
+                android:ems="10"
+                android:inputType="phone"
+                android:maxLength="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/save_edit_cd"
         android:layout_width="200dp"

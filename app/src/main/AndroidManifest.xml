@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Bridge">
-        <activity android:name=".popup"></activity>
+        <activity android:name=".TransactionEditActivity"></activity>
+        <activity android:name=".popup" />
         <activity android:name=".RangeActivity" />
         <activity android:name=".TransactionsActivity" />
         <activity android:name=".EditCategoryActivity" />

@@ -5,8 +5,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
@@ -14,10 +17,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class profile extends AppCompatActivity {
@@ -26,31 +33,95 @@ public class profile extends AppCompatActivity {
     CardView btn;
     SharedPreferences sp;
     TextInputEditText salary_edit;
+    private String name;
+    private EditText sname;
+    private EditText email;
+    private TextView dob11;
+    private EditText ques;
+    private EditText ans;
+    String qq;
+    DatePickerDialog.OnDateSetListener setListener;
+    TextView from_date;
+    CardView cardview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_profile);
         /*Databasehelper db = new Databasehelper(this);
+
+
+
 
         List<List<String>> x;
         x = db.getCategories();
         List<String> cat = x.get(2);
         Toast.makeText(this,cat.get(3),Toast.LENGTH_SHORT).show();*/
+        cardview = findViewById(R.id.save_edit_cd);
+        sname=findViewById(R.id.name_edit);
 
-        btn=findViewById(R.id.save_edit_cd);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
         int salary = Integer.parseInt(sp.getString("com.start.salary","0"));
         salary_edit=findViewById(R.id.edit_salary);
+        email=findViewById(R.id.email_edit);
+        from_date=findViewById(R.id.dob);
+        ques=findViewById(R.id.ques_edit);
+        ans=findViewById(R.id.ans_edit);
 
+
+        sname.setText(sp.getString("com.start.user_name","name"));
+        salary_edit.setText(sp.getString("com.start.salary","salary"));
+        email.setText(sp.getString("com.start.user_mail","email"));
+        from_date.setText(sp.getString("com.start.user_dob","DOB"));
+        ques.setText(sp.getString("com.start.question","question"));
+        qq=sp.getString("com.start.question","question");
+        ans.setText(sp.getString(qq,"answer"));
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setTitle("Profile");
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        Calendar calendar= Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        from_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(profile.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,setListener,year,month,day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = day+"/"+month+"/"+year;
+                from_date.setText(date);
+            }
+        };
+
+        from_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(profile.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month=month+1;
+                        String date = day+"/"+month+"/"+year;
+                        from_date.setText(date);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
+
+
+        /*btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sp.edit();
@@ -66,7 +137,26 @@ public class profile extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
+        });*/
+
+        cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name_st = sname.getText().toString();
+                String email_st = email.getText().toString();
+                String dob_st = from_date.getText().toString();
+                String salary_st = salary_edit.getText().toString();
+                String ques_st = ques.getText().toString();
+                String ans_st = ans.getText().toString();
+                Intent intent = new Intent(profile.this,home.class);
+                    startActivity(intent);
+                    finish();
+            }
         });
+
+
+
+
 
     }
 
