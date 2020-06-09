@@ -121,13 +121,15 @@ public class RangeActivity extends AppCompatActivity {
                 String date2=to_date.getText().toString();
                 String[] st1=date1.split("/");
                 String[] st2=date2.split("/");
+                String nst1 = st1[2] + "/" + st1[1] + "/" + st1[0];
+                String nst2 = st2[2] + "/" + st2[1] + "/" + st2[0];
                 int flag=0;
                 for(int i=0;i<st1.length;i++){
                     if(Integer.parseInt(st1[i])<=Integer.parseInt(st2[i])){
                         flag++;
                     }
                 }
-                if(!(date1.equals("")) && !(date2.equals("")) && flag == 3){
+                if(!(date1.equals("")) && !(date2.equals("")) && nst2.compareTo(nst1) >= 0){
                     intent.putExtra("date1",date1 );
                     intent.putExtra("date2",date2);
                     // Toast.makeText(RangeActivity.this, date1+","+date2, Toast.LENGTH_SHORT).show();

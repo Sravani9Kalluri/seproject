@@ -68,7 +68,7 @@ public class TransactionsActivity extends AppCompatActivity {
     }
 
     private void loadInfo(){
-        //transactions=new ArrayList<>();
+        transactions=new ArrayList<>();
         List<List<String>> x;
         Databasehelper db = new Databasehelper(this);
         x = db.gettransactions(from_date,to_date);
@@ -79,14 +79,15 @@ public class TransactionsActivity extends AppCompatActivity {
         else{
 
             List<String> id = x.get(0);
-            List<String> date = x.get(1);
-            List<String> amt = x.get(2);
+            List<String> amt = x.get(1);
+            List<String> date = x.get(2);
             List<String> cat = x.get(3);
             List<String> shop = x.get(4);
+            Log.e("hello","hello");
 
 
             for (int i=0;i<cat.size();i++){
-
+                Log.e("hello","hello");
                 ModelTransactions model = new ModelTransactions(Double.parseDouble(amt.get(i)),shop.get(i),cat.get(i),date.get(i),id.get(i));
                 transactions.add(model);
                 adapterTransactions=new AdapterTransactions(TransactionsActivity.this,transactions);

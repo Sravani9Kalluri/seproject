@@ -36,13 +36,13 @@ public class AdapterTransactions extends RecyclerView.Adapter<AdapterTransaction
     public void onBindViewHolder(@NonNull HolderTransactions holder, int position) {
         final ModelTransactions model = transactions.get(position);
 
-        double amount=Double.parseDouble(model.getAmount());
-        String shop=model.getShop();
-        String category=model.getCategory();
-        String date=model.getDate();
+        final String amount=model.getAmount();
+        final String shop=model.getShop();
+        final String category=model.getCategory();
+        final String date=model.getDate();
         final String id=model.getId();
 
-        holder.amountTv.setText(Double.toString(amount));
+        holder.amountTv.setText(amount);
         holder.shopTv.setText(shop);
         holder.categoryTv.setText(category);
         holder.dateTv.setText(date);
@@ -56,8 +56,10 @@ public class AdapterTransactions extends RecyclerView.Adapter<AdapterTransaction
         holder.actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context,EditShopActivity.class);
+                Intent intent=new Intent(context,TransactionEditActivity.class);
                 intent.putExtra("id",id);
+                intent.putExtra("categ",category);
+                intent.putExtra("amt",amount);
                 context.startActivity(intent);
             }
         });

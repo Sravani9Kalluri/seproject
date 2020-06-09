@@ -15,6 +15,7 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
@@ -35,6 +36,9 @@ public class showanalysis extends AppCompatActivity {
         setContentView(R.layout.activity_showanalysis);
         GraphView graph = (GraphView) findViewById(R.id.graph);
         BarGraphSeries<DataPoint> Series = new BarGraphSeries<>(data());
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(labels());
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
         Series.setSpacing(60);
         Series.setDrawValuesOnTop(true);
         Series.setValuesOnTopColor(Color.RED);
@@ -74,6 +78,22 @@ public class showanalysis extends AppCompatActivity {
             values[i] = v;
         }
         return values;
+    }
+    private String[] labels(){
+        List<List<String>> x;
+        Databasehelper db = new Databasehelper(this);
+        x = db.getCategories();
+        List<String> cat = x.get(0);
+        int n = cat.size();
+        String[] res = new String[n];
+        for(int i = 0;i<n;i++){
+            int end = 6;
+            if(end > cat.get(i).length() ){
+                end = cat.get(i).length() ;
+            }
+            res[i] = cat.get(i).substring(0,end);
+        }
+        return res;
     }
 
     private void loadInfo(){

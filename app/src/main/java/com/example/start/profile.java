@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -148,9 +149,27 @@ public class profile extends AppCompatActivity {
                 String salary_st = salary_edit.getText().toString();
                 String ques_st = ques.getText().toString();
                 String ans_st = ans.getText().toString();
-                Intent intent = new Intent(profile.this,home.class);
+                 String oldemail = sp.getString("com.start.user_mail","");
+                 String pswd = sp.getString(oldemail,"");
+                if(!(name_st.equals("")) && !(email_st.equals("")) && !(dob_st.equals("")) && !(salary_st.equals("")) && !(ques_st.equals("")) && !(ans_st.equals("")))
+                {
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("com.start.user_name", name_st);
+                    editor.putString("com.start.user_mail",email_st);
+                    editor.putString("com.start.user_dob",dob_st);
+                    editor.putString(email_st, pswd);
+                    editor.putString(ques_st,ans_st);
+                    editor.putString("com.start.question",ques_st);
+                    editor.commit();
+
+
+                    Intent intent = new Intent(profile.this, home.class);
                     startActivity(intent);
                     finish();
+                }
+                else{
+                    Toast.makeText(profile.this,"fill the blank info",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

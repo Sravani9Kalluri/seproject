@@ -23,6 +23,8 @@ public class TransactionEditActivity extends AppCompatActivity {
     CardView cardview1;
     CardView cardview2;
     private String id;
+    private String amt;
+    private String categ;
     private Spinner spinner;
 
     @Override
@@ -38,6 +40,9 @@ public class TransactionEditActivity extends AppCompatActivity {
         Bundle b=iin.getExtras();
         if(b!=null){
             id=(String)b.get("id");
+            amt=(String)b.get("amt");
+            categ=(String)b.get("categ");
+
         }
 
         final Databasehelper db = new Databasehelper(this);
@@ -100,14 +105,17 @@ public class TransactionEditActivity extends AppCompatActivity {
         cardview1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransactionEditActivity.this,TransactionsActivity.class);
+                Intent intent = new Intent(TransactionEditActivity.this,RangeActivity.class);
                 if(pos[0] ==0){
                     Toast.makeText(TransactionEditActivity.this,"Select valid category", Toast.LENGTH_SHORT).show();
 
                 }
                 else{
-                    Log.e("cat",cat.get(pos[0] - 1));
-                    db.editshop(id,cat.get(pos[0] - 1));
+                    Log.e("cat",cat.get(pos[0]-1 ));
+                    Log.e("cat",amt);
+                    Log.e("cat",categ);
+                    Log.e("cat",id);
+                    db.edittran(id,amt,categ,cat.get(pos[0]-1));
                     Toast.makeText(TransactionEditActivity.this,"updated successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();
@@ -119,8 +127,8 @@ public class TransactionEditActivity extends AppCompatActivity {
         cardview2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransactionEditActivity.this,TransactionsActivity.class);
-                db.deleteshop(id);
+                Intent intent = new Intent(TransactionEditActivity.this,RangeActivity.class);
+                db.deletetran(id,amt,categ);
                 Toast.makeText(TransactionEditActivity.this,"removed successfully", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 finish();

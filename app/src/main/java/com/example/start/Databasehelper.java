@@ -398,6 +398,26 @@ public class Databasehelper extends SQLiteOpenHelper {
         dbt.execSQL(sql);
         dbt.close();
     }
+    public void edittran(String id,String amt,String ocat,String ncat){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        String sql1 = "UPDATE " + TRAN_TABLE + " SET " + T_CATEGORY + "=" + "'" + ncat + "'" + " WHERE " + T_ID + "=" + id;
+        String sql2 = "UPDATE " + CAT_TABLE + " SET " + C_AMOUNT + "=" + C_AMOUNT + "+" + amt +  " WHERE " + C_CAT + "=" + "'" + ncat + "'" ;
+        String sql3 = "UPDATE " + CAT_TABLE + " SET " + C_AMOUNT + "=" + C_AMOUNT + "-" + amt +  " WHERE " + C_CAT + "=" + "'" + ocat + "'" ;
+        dbt.execSQL(sql1);
+        dbt.execSQL(sql2);
+        dbt.execSQL(sql3);
+        dbt.close();
+
+
+    }
+    public void deletetran(String id,String amt,String ocat){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        String sql = "DELETE FROM " + TRAN_TABLE  + " WHERE " + T_ID + "=" + id;
+        String sql1 = "UPDATE " + CAT_TABLE + " SET " + C_AMOUNT + "=" + C_AMOUNT + "-" + amt +  " WHERE " + C_CAT + "=" + "'" + ocat + "'" ;
+        dbt.execSQL(sql1);
+        dbt.execSQL(sql);
+        dbt.close();
+    }
 
 
 
