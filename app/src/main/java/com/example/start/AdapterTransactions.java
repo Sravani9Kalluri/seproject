@@ -40,6 +40,7 @@ public class AdapterTransactions extends RecyclerView.Adapter<AdapterTransaction
         String shop=model.getShop();
         String category=model.getCategory();
         String date=model.getDate();
+        final String id=model.getId();
 
         holder.amountTv.setText(Double.toString(amount));
         holder.shopTv.setText(shop);
@@ -56,6 +57,7 @@ public class AdapterTransactions extends RecyclerView.Adapter<AdapterTransaction
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,EditShopActivity.class);
+                intent.putExtra("id",id);
                 context.startActivity(intent);
             }
         });

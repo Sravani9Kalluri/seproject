@@ -5,12 +5,14 @@ public class ModelTransactions {
     private String shop;
     private String category;
     private String date;
+    private String id;
 
-    public ModelTransactions(double amount,String shop,String category,String date) {
+    public ModelTransactions(double amount,String shop,String category,String date,String id) {
         this.amount = Double.toString(amount);
         this.shop = shop;
         this.category = category;
         this.date = date;
+        this.id=id;
     }
 
     public void setAmount(double num) {
@@ -41,8 +43,16 @@ public class ModelTransactions {
         return this.date;
     }
 
-    public void setDate(String category) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

@@ -76,31 +76,24 @@ public class TransactionsActivity extends AppCompatActivity {
         if(x.size() == 0){
             Toast.makeText(TransactionsActivity.this,"No transactions to show", Toast.LENGTH_SHORT).show();
         }
+        else{
 
-        /*List<String> amt = x.get(0);
-        List<String> shop = x.get(1);
-        List<String> cat = x.get(2);
-        List<String> date = x.get(3);
+            List<String> id = x.get(0);
+            List<String> date = x.get(1);
+            List<String> amt = x.get(2);
+            List<String> cat = x.get(3);
+            List<String> shop = x.get(4);
 
-        List<String> amt = null;
-        List<String> shop = null;
-        List<String> cat = null;
-        List<String> date = null;
-        amt.add("60");
-        amt.add("600");
-        amt.add("ABC");
-        amt.add("XYZ");
-        amt.add("Food");
-        amt.add("Bills");
-        amt.add("13/5/2020");
-        amt.add("10/5/2020");
-        for (int i=0;i<cat.size();i++){
 
-            ModelTransactions model = new ModelTransactions(Double.parseDouble(amt.get(i)),shop.get(i),cat.get(i),date.get(i));
-            transactions.add(model);
-            adapterTransactions=new AdapterTransactions(TransactionsActivity.this,transactions);
-            usersRv.setAdapter(adapterTransactions);
-        }*/
+            for (int i=0;i<cat.size();i++){
+
+                ModelTransactions model = new ModelTransactions(Double.parseDouble(amt.get(i)),shop.get(i),cat.get(i),date.get(i),id.get(i));
+                transactions.add(model);
+                adapterTransactions=new AdapterTransactions(TransactionsActivity.this,transactions);
+                usersRv.setAdapter(adapterTransactions);
+            }
+
+        }
 
     }
     //
