@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,10 +36,10 @@ public class addshop extends AppCompatActivity {
         sname=findViewById(R.id.sname);
 
 
-        Databasehelper db = new Databasehelper(this);
+        final Databasehelper db = new Databasehelper(this);
         List<List<String>> x;
         x = db.getCategories();
-        List<String> cat = x.get(0);
+        final List<String> cat = x.get(0);
         cats=new String[cat.size()];
 
 
@@ -63,7 +64,7 @@ public class addshop extends AppCompatActivity {
                 else{
                     String item=parent.getItemAtPosition(position).toString();
                     pos[0] =position;
-                    //update db using position and item values
+
                     Toast.makeText(parent.getContext(), "Selected"+item, Toast.LENGTH_SHORT).show();
 
                 }
@@ -88,7 +89,8 @@ public class addshop extends AppCompatActivity {
 
                 }
                 else{
-                    //function to update limit in db
+                    Log.e("cat",cat.get(pos[0] - 1));
+                    db.addnewshop(sname_st,cat.get(pos[0] - 1));
                     Toast.makeText(addshop.this,"updated successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();

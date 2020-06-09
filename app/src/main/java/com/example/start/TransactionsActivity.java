@@ -68,11 +68,14 @@ public class TransactionsActivity extends AppCompatActivity {
     }
 
     private void loadInfo(){
-        transactions=new ArrayList<>();
-        int x;
+        //transactions=new ArrayList<>();
+        List<List<String>> x;
         Databasehelper db = new Databasehelper(this);
         x = db.gettransactions(from_date,to_date);
         Log.e("x", String.valueOf(x));
+        if(x.size() == 0){
+            Toast.makeText(TransactionsActivity.this,"No transactions to show", Toast.LENGTH_SHORT).show();
+        }
 
         /*List<String> amt = x.get(0);
         List<String> shop = x.get(1);

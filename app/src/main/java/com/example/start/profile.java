@@ -41,7 +41,7 @@ public class profile extends AppCompatActivity {
 
         btn=findViewById(R.id.save_edit_cd);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
-        int salary = Integer.parseInt(sp.getString("salary","0"));
+        int salary = Integer.parseInt(sp.getString("com.start.salary","0"));
         salary_edit=findViewById(R.id.edit_salary);
 
 

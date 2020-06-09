@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,13 +37,13 @@ public class EditShopActivity extends AppCompatActivity {
         Intent iin=getIntent();
         Bundle b=iin.getExtras();
         if(b!=null){
-            shop=(String)b.get("shopname");
+           shop=(String)b.get("shopname");
         }
 
-        Databasehelper db = new Databasehelper(this);
+        final Databasehelper db = new Databasehelper(this);
         List<List<String>> x;
         x = db.getCategories();
-        List<String> cat = x.get(0);
+        final List<String> cat = x.get(0);
         cats=new String[cat.size()];
 
 
@@ -105,7 +106,8 @@ public class EditShopActivity extends AppCompatActivity {
 
                 }
                 else{
-                    //function to update limit in db
+                    Log.e("cat",cat.get(pos[0] - 1));
+                    db.editshop(shop,cat.get(pos[0] - 1));
                     Toast.makeText(EditShopActivity.this,"updated successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();
@@ -118,7 +120,7 @@ public class EditShopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditShopActivity.this,ShopsDisplay.class);
-                    //function to search and delete in db
+                    db.deleteshop(shop);
                     Toast.makeText(EditShopActivity.this,"removed successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();

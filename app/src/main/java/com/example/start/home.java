@@ -26,8 +26,8 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         sp = PreferenceManager.getDefaultSharedPreferences(this);
-        int salary = sp.getInt("salary",0);
-        if(salary == 0){
+        String salary = sp.getString("com.start.salary","0");
+        if(salary == "0"){
             Toast.makeText(home.this,"Enter salary",Toast.LENGTH_LONG).show();
             Intent intent=new Intent(home.this,profile.class);
             startActivity(intent);

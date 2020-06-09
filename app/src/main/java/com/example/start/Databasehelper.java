@@ -297,7 +297,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public int gettransactions(String from_date,String to_date){
+    public List<List<String>> gettransactions(String from_date,String to_date){
         List<List<String>> result = new ArrayList<>();
         String [] frst = from_date.split("/");
         String [] tst = to_date.split("/");
@@ -344,7 +344,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         cursor.close();
         dbt.close();
 
-        return result1;
+        return result;
     }
     public void initamount(){
         SQLiteDatabase dbt = this.getWritableDatabase();
@@ -367,10 +367,34 @@ public class Databasehelper extends SQLiteOpenHelper {
         cn.put(C_DEFAULT, 0);
         dbt.insert(CAT_TABLE,null,cn);
         dbt.close();
+
     }
     public void editcat(String cat,String limit){
         SQLiteDatabase dbt = this.getWritableDatabase();
         String sql = "UPDATE " + CAT_TABLE + " SET " + C_LIMIT + "=" + limit + " WHERE " + C_CAT + "= '" + cat + "'";
+        dbt.execSQL(sql);
+        dbt.close();
+    }
+    public void addnewshop(String name,String cat){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        ContentValues cn = new ContentValues();
+        cn.put(S_SHOP,name);
+        cn.put(S_CATEGORY,cat);
+        dbt.insert(SHOP_TABLE,null,cn);
+        dbt.close();
+
+
+    }
+    public void editshop(String shop,String cat){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        String sql = "UPDATE " + SHOP_TABLE + " SET " + S_CATEGORY + "=" + "'" + cat + "'" + " WHERE " + S_SHOP + "= '" + shop + "'";
+        dbt.execSQL(sql);
+        dbt.close();
+
+    }
+    public void deleteshop(String shop){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        String sql = "DELETE FROM " + SHOP_TABLE  + " WHERE " + S_SHOP + "= '" + shop + "'";
         dbt.execSQL(sql);
         dbt.close();
     }
