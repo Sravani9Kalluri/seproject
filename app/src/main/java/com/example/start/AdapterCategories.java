@@ -37,7 +37,7 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.Ho
     @Override
     public void onBindViewHolder(@NonNull HolderCategories holder, int position) {
         final ModelCategoriesList model = categoriesLists.get(position);
-        String category=model.getCategory();
+        final String category=model.getCategory();
         double limit=Double.parseDouble(model.getLimit());
         double amount=Double.parseDouble(model.getAmount());
 
@@ -54,6 +54,7 @@ public class AdapterCategories extends RecyclerView.Adapter<AdapterCategories.Ho
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,EditCategoryActivity.class);
+                intent.putExtra("category",category);
                 context.startActivity(intent);
             }
         });
