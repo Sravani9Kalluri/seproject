@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,9 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +33,12 @@ public class showanalysis extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showanalysis);
-
-
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        BarGraphSeries<DataPoint> Series = new BarGraphSeries<>(data());
+        Series.setSpacing(60);
+        Series.setDrawValuesOnTop(true);
+        Series.setValuesOnTopColor(Color.RED);
+        graph.addSeries(Series);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -54,6 +62,19 @@ public class showanalysis extends AppCompatActivity {
             }
         });
     }
+    private DataPoint[] data(){
+        List<List<String>> x;
+        Databasehelper db = new Databasehelper(this);
+        x = db.getCategories();
+        List<String> amount = x.get(2);
+        int n = amount.size();
+        DataPoint[] values = new DataPoint[n];
+        for(int i = 0;i < n;i++){
+            DataPoint v = new DataPoint(i + 1,Integer.parseInt(amount.get(i)));
+            values[i] = v;
+        }
+        return values;
+    }
 
     private void loadInfo(){
         modelCategoriesLists=new ArrayList<>();
@@ -63,6 +84,7 @@ public class showanalysis extends AppCompatActivity {
         List<String> cat = x.get(0);
         List<String> limit = x.get(1);
         List<String> amount = x.get(2);
+
         for (int i=0;i<cat.size();i++){
 
             ModelCategoriesList model = new ModelCategoriesList(cat.get(i),Double.parseDouble(limit.get(i)),Double.parseDouble(amount.get(i)));
