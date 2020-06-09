@@ -1,6 +1,7 @@
 package com.example.start;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -12,6 +13,7 @@ import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -86,9 +88,72 @@ public class profile extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void display_name(View view){
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(profile.this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_popup,null);
+//        EditText changename = (EditText)mView.findViewById(R.id.changename);
+        Button cancel = (Button)mView.findViewById(R.id.cancel_btn);
+        Button ok = (Button)mView.findViewById(R.id.ok_btn);
+
+        alert.setView(mView);
+
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+
+            }
+        });
+        alertDialog.show();
+
+    }
+
+    public void display_sal(View view){
+        AlertDialog.Builder alert = new AlertDialog.Builder(profile.this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_popup,null);
+//        EditText changename = (EditText)mView.findViewById(R.id.changename);
+        Button cancel = (Button)mView.findViewById(R.id.cancel_btn);
+        Button ok = (Button)mView.findViewById(R.id.ok_btn);
+
+        alert.setView(mView);
+
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+
+            }
+        });
+        alertDialog.show();
+
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
 }
+
+
