@@ -134,5 +134,11 @@ public class addshop extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
-
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(addshop.this,ShopsDisplay.class);
+        startActivity(intent);
+        finish();
+    }
 }

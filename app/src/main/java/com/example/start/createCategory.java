@@ -61,4 +61,12 @@ public class createCategory extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(createCategory.this,addcategory.class);
+        startActivity(intent);
+        finish();
+    }
 }

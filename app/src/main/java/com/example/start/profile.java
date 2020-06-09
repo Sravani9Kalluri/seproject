@@ -263,6 +263,14 @@ public class profile extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(profile.this,home.class);
+        startActivity(intent);
+        finish();
+    }
 }
 
 

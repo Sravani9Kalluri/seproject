@@ -134,5 +134,13 @@ public class EditShopActivity extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(EditShopActivity.this,ShopsDisplay.class);
+        startActivity(intent);
+        finish();
+    }
 }
 

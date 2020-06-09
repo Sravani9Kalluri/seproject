@@ -68,4 +68,12 @@ public class EditCategoryActivity extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(EditCategoryActivity.this,addcategory.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
