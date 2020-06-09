@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -68,10 +69,11 @@ public class TransactionsActivity extends AppCompatActivity {
 
     private void loadInfo(){
         transactions=new ArrayList<>();
-        /*List<List<String>> x;
+        List<List<String>> x;
         Databasehelper db = new Databasehelper(this);
-        x = db.getshops();
-        List<String> amt = x.get(0);
+        x = db.gettransactions(from_date,to_date);
+        Log.e("x","get");
+        /*List<String> amt = x.get(0);
         List<String> shop = x.get(1);
         List<String> cat = x.get(2);
         List<String> date = x.get(3);

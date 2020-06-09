@@ -127,15 +127,16 @@ public class RangeActivity extends AppCompatActivity {
                         flag++;
                     }
                 }
-                if(flag==3){
-                    intent.putExtra("date1",date1);
+                if(!(date1.equals("")) && !(date2.equals("")) && flag == 3){
+                    intent.putExtra("date1",date1 );
                     intent.putExtra("date2",date2);
                     // Toast.makeText(RangeActivity.this, date1+","+date2, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(RangeActivity.this, "Pick a valid range", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RangeActivity.this,"fill valid dates", Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });
