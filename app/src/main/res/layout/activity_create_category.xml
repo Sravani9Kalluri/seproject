@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:gravity="center"
-        android:inputType="numberPassword"
+        android:inputType="number"
         android:hint="Limit" />
 
 

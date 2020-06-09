@@ -49,6 +49,7 @@
                 android:clickable="true"
                 android:drawableLeft="@drawable/ic_action_password"
                 android:ems="10"
+                android:maxLength="4"
                 android:gravity="center"
                 android:hint="pin"
                 android:inputType="numberPassword|textCapCharacters"
