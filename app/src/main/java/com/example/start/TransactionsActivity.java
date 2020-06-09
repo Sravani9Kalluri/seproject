@@ -69,10 +69,11 @@ public class TransactionsActivity extends AppCompatActivity {
 
     private void loadInfo(){
         transactions=new ArrayList<>();
-        List<List<String>> x;
+        int x;
         Databasehelper db = new Databasehelper(this);
         x = db.gettransactions(from_date,to_date);
-        Log.e("x","get");
+        Log.e("x", String.valueOf(x));
+
         /*List<String> amt = x.get(0);
         List<String> shop = x.get(1);
         List<String> cat = x.get(2);

@@ -276,8 +276,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         t.put(T_CATEGORY, category);
         t.put(T_DATE, date);
         t.put(T_SHOP, shop);
-        Log.e("added trans","found");
-        Log.e("cat",category);
+        db.insert(TRAN_TABLE,null,t);
+        Log.e("added trans",date);
         boolean flag = false;
         String checkquery = "SELECT * FROM " + CAT_TABLE + " WHERE " + C_CAT + "='" + category + "'";
         Cursor cursor = db.rawQuery(checkquery,null);
@@ -297,12 +297,26 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public List<List<String>> gettransactions(String from_date,String to_date){
+    public int gettransactions(String from_date,String to_date){
         List<List<String>> result = new ArrayList<>();
         String [] frst = from_date.split("/");
         String [] tst = to_date.split("/");
+        if(Integer.parseInt(frst[1]) < 10){
+            frst[1] = "0" + frst[1];
+        }
+        if(Integer.parseInt(frst[0]) < 10){
+            frst[0] = "0" + frst[0];
+        }
+        if(Integer.parseInt(tst[1]) < 10){
+            tst[1] = "0" + tst[1];
+        }
+        if(Integer.parseInt(tst[0]) < 10){
+            tst[0] = "0" + tst[0];
+        }
         String nfrom_date = frst[2] + "/" + frst[1] + "/" + frst[0];
         String nto_date = tst[2] + "/" + tst[1] + "/" + tst[0];
+        Log.e("from",nfrom_date);
+        Log.e("to",nto_date);
         SQLiteDatabase dbt = this.getReadableDatabase();
         String sql = "SELECT * FROM " + TRAN_TABLE + " WHERE " + T_DATE + ">=" + "'" + nfrom_date + "'" + " AND " + T_DATE + "<=" + "'" + nto_date + "'";
         Cursor cursor = dbt.rawQuery(sql,null);
@@ -326,10 +340,11 @@ public class Databasehelper extends SQLiteOpenHelper {
             result.add(category);
             result.add(shop);
         }
+        int result1 = cursor.getCount();
         cursor.close();
         dbt.close();
 
-        return result;
+        return result1;
     }
     public void initamount(){
         SQLiteDatabase dbt = this.getWritableDatabase();
@@ -342,6 +357,22 @@ public class Databasehelper extends SQLiteOpenHelper {
         Log.e("initamount","success");
         dbt.close();
 
+    }
+    public void addnewcat(String cat,String limit){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        ContentValues cn = new ContentValues();
+        cn.put(C_CAT, cat);
+        cn.put(C_LIMIT, Integer.parseInt(limit));
+        cn.put(C_AMOUNT, 0);
+        cn.put(C_DEFAULT, 0);
+        dbt.insert(CAT_TABLE,null,cn);
+        dbt.close();
+    }
+    public void editcat(String cat,String limit){
+        SQLiteDatabase dbt = this.getWritableDatabase();
+        String sql = "UPDATE " + CAT_TABLE + " SET " + C_LIMIT + "=" + limit + " WHERE " + C_CAT + "= '" + cat + "'";
+        dbt.execSQL(sql);
+        dbt.close();
     }
 
 

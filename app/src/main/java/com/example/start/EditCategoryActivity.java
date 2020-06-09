@@ -41,6 +41,7 @@ public class EditCategoryActivity extends AppCompatActivity {
             category=(String)b.get("category");
         }
         Toast.makeText(EditCategoryActivity.this,category, Toast.LENGTH_SHORT).show();
+        final Databasehelper db = new Databasehelper(this);
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +52,7 @@ public class EditCategoryActivity extends AppCompatActivity {
 
                 }
                 else{
-                    //function to update limit in db
+                    db.editcat(category,limit_st);
                     Toast.makeText(EditCategoryActivity.this,"updated successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();

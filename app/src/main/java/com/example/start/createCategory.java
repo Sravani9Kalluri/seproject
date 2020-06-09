@@ -30,7 +30,7 @@ public class createCategory extends AppCompatActivity {
         new_cat=findViewById(R.id.newcat);
         new_limit=findViewById(R.id.new_limit1);
         cardview=findViewById(R.id.savenewcat1);
-
+        final Databasehelper db = new Databasehelper(this);
         cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +44,7 @@ public class createCategory extends AppCompatActivity {
                     Toast.makeText(createCategory.this,"limit field is empty", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //function to update limit in db
+                    db.addnewcat(cat_st,limit_st);
                     Toast.makeText(createCategory.this,"created successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish();
