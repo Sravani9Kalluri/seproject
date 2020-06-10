@@ -85,6 +85,10 @@ public class Messagereciever extends BroadcastReceiver {
         String REGEX2 = "for ATM txn";
         Pattern p2 = Pattern.compile(REGEX2);
         Matcher m2 = p2.matcher(msgstr);
+        String REGEX4 = "for ECOM txn";
+        Pattern p4 = Pattern.compile(REGEX4);
+        Matcher m4 = p4.matcher(msgstr);
+
         Log.e("getshopname called","found");
         if(m1.find()){
           String msgstrn = msgstr.substring(m1.start());
@@ -100,6 +104,9 @@ public class Messagereciever extends BroadcastReceiver {
         }
         if(m2.find()){
             return "atm";
+        }
+        if(m4.find()){
+            return "ecom";
         }
         return "nada";
     }

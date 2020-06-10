@@ -229,6 +229,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         shoplist.put("inox","entertainment");
         shoplist.put("pvr","entertainment");
         shoplist.put("just bake","food and necessities");
+        shoplist.put("ecom","food and necessities");
         String selectQuery = "SELECT  * FROM " + SHOP_TABLE + " WHERE " + S_SHOP + "=" + "'" + shop + "'";
         SQLiteDatabase dbt = this.getReadableDatabase();
         Cursor cursor = dbt.rawQuery(selectQuery, null);
