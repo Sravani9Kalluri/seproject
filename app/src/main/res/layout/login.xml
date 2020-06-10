@@ -52,6 +52,7 @@
                 android:maxLength="4"
                 android:gravity="center"
                 android:hint="pin"
+                android:longClickable="false"
                 android:inputType="numberPassword|textCapCharacters"
                 android:password="true"
                 android:textColor="#fff"
