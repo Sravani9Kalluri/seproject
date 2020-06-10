@@ -85,4 +85,13 @@ public class home extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(home.this,home.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
