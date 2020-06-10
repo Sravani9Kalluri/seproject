@@ -48,4 +48,12 @@ public class forgot extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(forgot.this,login.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

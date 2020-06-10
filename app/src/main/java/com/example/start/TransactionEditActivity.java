@@ -146,7 +146,7 @@ public class TransactionEditActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-        Intent intent = new Intent(TransactionEditActivity.this,TransactionsActivity.class);
+        Intent intent = new Intent(TransactionEditActivity.this,showanalysis.class);
         startActivity(intent);
         finish();
     }

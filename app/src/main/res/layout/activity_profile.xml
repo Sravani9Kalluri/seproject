@@ -157,9 +157,7 @@
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:autofillHints="Security Question"
-                    android:ems="10"
-                    android:inputType="phone"
-                    android:maxLength="10" />
+                    android:ems="10" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -189,9 +187,7 @@
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:autofillHints="Security answer"
-                    android:ems="10"
-                    android:inputType="phone"
-                    android:maxLength="10" />
+                    android:ems="10" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

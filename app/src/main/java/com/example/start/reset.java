@@ -51,4 +51,12 @@ public class reset extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(reset.this,login.class);
+        startActivity(intent);
+        finish();
+    }
 }
