@@ -18,6 +18,8 @@ public class home extends AppCompatActivity {
     CardView setcard;
     SharedPreferences sp;
     //hello for commit
+    private long backPressedTime;
+    private Toast backToast;
 
     private ActionBar actionBar;
 
@@ -88,10 +90,21 @@ public class home extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        super.onBackPressed();
-        Intent intent = new Intent(home.this,home.class);
+
+        if(backPressedTime+2000>System.currentTimeMillis()){
+            backToast.cancel();
+            super.onBackPressed();;
+            return;
+        }
+        else{
+            backToast=Toast.makeText(getBaseContext(),"Press back again to exit",Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backPressedTime=System.currentTimeMillis();
+        /*Intent intent = new Intent(home.this,home.class);
         startActivity(intent);
-        finish();
+        finish();*/
     }
+
 
 }

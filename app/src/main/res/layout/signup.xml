@@ -64,6 +64,7 @@
                 android:ems="10"
                 android:foregroundGravity="center"
                 android:gravity="center"
+                android:longClickable="false"
                 android:hint="pin"
                 android:maxLength="4"
                 android:inputType="numberPassword"
@@ -92,6 +93,7 @@
         android:foregroundGravity="center"
         android:gravity="center"
         android:hint="confirm pin"
+        android:longClickable="false"
         android:textColor="#fff"
         android:inputType="numberPassword"
         android:textColorHint="#fff" />

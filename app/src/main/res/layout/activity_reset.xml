@@ -21,6 +21,7 @@
         android:hint="new password"
         android:inputType="numberPassword"
         android:textColor="#fff"
+        android:longClickable="false"
         android:textColorHint="#fff"
         android:textSize="24sp" />
 
@@ -45,6 +46,7 @@
         android:foregroundGravity="center"
         android:gravity="center"
         android:maxLength="4"
+        android:longClickable="false"
         android:hint="confirm new password"
         android:inputType="numberPassword"
         android:textColor="#fff"
