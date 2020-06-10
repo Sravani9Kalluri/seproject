@@ -70,13 +70,13 @@ public class profile extends AppCompatActivity {
         ans=findViewById(R.id.ans_edit);
 
 
-        sname.setText(sp.getString("com.start.user_name","name"));
-        salary_edit.setText(sp.getString("com.start.salary","salary"));
-        email.setText(sp.getString("com.start.user_mail","email"));
-        from_date.setText(sp.getString("com.start.user_dob","DOB"));
-        ques.setText(sp.getString("com.start.question","question"));
-        qq=sp.getString("com.start.question","question");
-        ans.setText(sp.getString(qq,"answer"));
+        sname.setText(sp.getString("com.start.user_name",""));
+        salary_edit.setText(sp.getString("com.start.salary",""));
+        email.setText(sp.getString("com.start.user_mail",""));
+        from_date.setText(sp.getString("com.start.user_dob",""));
+        ques.setText(sp.getString("com.start.question",""));
+        qq=sp.getString("com.start.question","");
+        ans.setText(sp.getString(qq,""));
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -157,7 +157,9 @@ public class profile extends AppCompatActivity {
                     editor.putString("com.start.user_name", name_st);
                     editor.putString("com.start.user_mail",email_st);
                     editor.putString("com.start.user_dob",dob_st);
+                    editor.putString("com.start.salary",salary_st);
                     editor.putString(email_st, pswd);
+                    editor.remove(oldemail);
                     editor.putString(ques_st,ans_st);
                     editor.putString("com.start.question",ques_st);
                     editor.commit();

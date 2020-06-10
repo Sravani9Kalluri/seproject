@@ -48,7 +48,8 @@ public class Messagereciever extends BroadcastReceiver {
 
             String amount = getamount(msgBody);
             String shop = getshopname(msgBody);
-            String date = getdate(msgBody);
+            String date = getdate(msgBody,now);
+            String[] d = date.split("/");
             if(amount != "nada" && shop != "nada" && date != "nada"){
                 Log.e("addtransaction called","found");
                 if(db.addtransaction(amount,date,shop)){
@@ -102,7 +103,7 @@ public class Messagereciever extends BroadcastReceiver {
         }
         return "nada";
     }
-    public String getdate(String msgstr){
+    public String getdate(String msgstr ,Calendar now){
         String REGEX = "on \\d{2}[-/]\\d{2}[-/]\\d+";
         Pattern p = Pattern.compile(REGEX);
         Matcher m = p.matcher(msgstr);
@@ -110,7 +111,20 @@ public class Messagereciever extends BroadcastReceiver {
             Log.e("getdate called","found");
             String datestr = msgstr.substring(m.start()+3,m.end()).replace('-','/');
             String [] datest= datestr.split("/");
-            return(datest[2] + "/" + datest[1] + "/" + datest[0]);
+            if(now.get(Calendar.YEAR) >= Integer.parseInt(datest[2])){
+                if(now.get(Calendar.MONTH) + 1  >= Integer.parseInt(datest[1])){
+                    if(now.get(Calendar.DATE)  >= Integer.parseInt(datest[0])){
+                        return(datest[2] + "/" + datest[1] + "/" + datest[0]);
+                    }
+                    else{
+                        return "nada";
+                    }
+                }
+                else{return "nada";}
+            }
+            else{return "nada";}
+
+
         }
         else {
             return "nada";
