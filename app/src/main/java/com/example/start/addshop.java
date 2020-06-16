@@ -35,6 +35,12 @@ public class addshop extends AppCompatActivity {
         spinner=findViewById(R.id.setcategory);
         sname=findViewById(R.id.sname);
 
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("New Shop");
+
+
 
         final Databasehelper db = new Databasehelper(this);
         List<List<String>> x;
@@ -44,7 +50,7 @@ public class addshop extends AppCompatActivity {
 
 
         List<String> cats1=new ArrayList<>();
-        cats1.add(0,"Change category to");
+        cats1.add(0,"Set category to");
         for(int i=0;i<cat.size();i++){
             cats1.add(i+1,cat.get(i));
         }
